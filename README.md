@@ -48,4 +48,4 @@
 ## WebpackManifestPlugin
 ## useTypeScript
 ### ForkTsCheckerWebpackPlugin
-# performance: false,
+# performance: false
