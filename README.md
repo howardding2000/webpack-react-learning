@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# loaders
+## source-map-loader
+- enforce: 'pre': makes this loader run as a "pre-loader"
+## oneOf
+- one type of file will use **only one** of the loaders in oneOf array.
+## images
+- asset
+## svg
+- @svgr/webpack 
+- file-loader
+## js
+- babel-loader
+ - Process application JS with Babel.
+ - Process any JS outside of the app with Babel.
+## CSS
+### style files regexes
+```js
+ const cssRegex = /\.css$/;
+ const cssModuleRegex = /\.module\.css$/;
+ const sassRegex = /\.(scss|sass)$/;
+ const sassModuleRegex = /\.module\.(scss|sass)$/;
+ ```
+ - so we can see Recat supports CSS and SASS by defaute 
+### getStyleLoaders
+- step1:postcss-loader / Processing CSS Compatibility
+- step2:css-lodar / Package CSS into JS
+- step3:
+ - development: style-lodar / Support HRM
+ - production : MiniCssExtractPlugin.loader / Packaging CSS separately
+## file loader: in webpack 5 is assest
+- **Make sure to add the new loader(s) before the "file" loader.**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# plugins
+## HtmlWebpackPlugin
+- Generates an `index.html` file with the `<script>` injected.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## isEnvProduction -> pllugins for production environment
+### InlineChunkHtmlPlugin
+### InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
+### ModuleNotFoundPlugin(paths.appPath),
+### webpack.DefinePlugin(env.stringified),
+- Defining environment variables
+### MiniCssExtractPlugin
+- Extract CSS into a separate file
+## isEnvDevelopment -> pllugins for production environment
+### CaseSensitivePathsPlugin
+- File paths are case sensitive
+## WebpackManifestPlugin
+## useTypeScript
+### ForkTsCheckerWebpackPlugin
+# performance: false,
